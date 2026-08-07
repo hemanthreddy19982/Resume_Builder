@@ -1,6 +1,6 @@
 {
   "buildCommand": "npm run build",
-  "outputDirectory": "dist",
+  "outputDirectory": "client/dist",
   "rewrites": [
     { "source": "/api/(.*)", "destination": "https://resumee-builder.onrender.com/api/$1" },
     { "source": "/uploads/(.*)", "destination": "https://resumee-builder.onrender.com/uploads/$1" },
