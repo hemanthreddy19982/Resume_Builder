@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "npm --prefix client run build",
-    "dev:client": "npm --prefix client run dev",
-    "dev:server": "npm --prefix server run dev",
-    "build:client": "npm --prefix client run build",
-    "build:server": "npm --prefix server run build",
+    "build": "cd client && npm install && vite build",
+    "dev:client": "cd client && npm run dev",
+    "dev:server": "cd server && npm run dev",
+    "build:client": "cd client && npm install && vite build",
+    "build:server": "cd server && npm install && tsc",
     "install:all": "npm install --prefix client && npm install --prefix server"
   }
 }
