@@ -58,7 +58,16 @@ app.post('/api/signature/upload', uploadMiddleware.single('signature'), (req, re
   res.json({ success: true, url: fileUrl, filename: req.file.filename });
 });
 
-// Health check
+// Version & Sync Health check
+app.get('/api/version', (_req, res) => {
+  res.json({
+    version: '1.0.0',
+    status: 'OK',
+    environment: process.env.NODE_ENV || 'production',
+    timestamp: new Date().toISOString(),
+  });
+});
+
 app.get('/api/health', (_req, res) => {
   res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });

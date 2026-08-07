@@ -1,0 +1,46 @@
+name: ResumeBuilder Parallel CI/CD
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  # Job 1: Client Matrix Build & Test (Runs Parallel)
+  build-client:
+    name: Build Frontend (Client)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install & Build Client
+        run: |
+          cd client
+          npm install
+          npm run build
+
+  # Job 2: Server Matrix Build & Test (Runs Simultaneously in Parallel)
+  build-server:
+    name: Build Backend (Server)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install & Build Server
+        run: |
+          cd server
+          npm install
+          npm run build
